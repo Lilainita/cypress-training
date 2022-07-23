@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 class ShippingStepPage {
   private checkOutBtn: string;
   private termsServiceCheck: string;

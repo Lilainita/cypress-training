@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 class PaymentStepPage {
   private bankWirePayment: string;
   private confirmOrderBtn: string;
@@ -14,6 +13,11 @@ class PaymentStepPage {
 
   public confirmOrder(): void {
     cy.get(this.confirmOrderBtn).click();
+  }
+
+  public assert() {
+    cy.get("#center_column > div > p > strong").should("have.text", "Your order on My Store is complete.");
+    return this;
   }
 }
 

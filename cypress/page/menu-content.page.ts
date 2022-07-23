@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 class MenuContentPage {
   private tShirtMenu: string;
   private menuContentPageURL: string;

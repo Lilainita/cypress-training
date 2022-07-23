@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 class LoginPage {
   private email: string;
   private psw: string;
@@ -10,12 +9,9 @@ class LoginPage {
     this.signInBtn = "#SubmitLogin > span";
   }
 
-  public login(): void {
-    cy.get(this.email).type("aperdomobo@gmail.com");
-    cy.get(this.psw).type("WorkshopProtractor");
-  }
-
-  public signIn(): void {
+  public login(email:string, passwd:string): void {
+    cy.get(this.email).type(email);
+    cy.get(this.psw).type(passwd);
     cy.get(this.signInBtn).click();
   }
 }
