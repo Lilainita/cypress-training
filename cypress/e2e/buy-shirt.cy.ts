@@ -1,20 +1,38 @@
+import {MenuContentPage} from "../page/menu-content.page";
+import {ProductListPage} from "../page/products-list.page";
+import {ShoppingCartPage} from "../page/shopping-cart.page";
+import {LoginPage} from "../page/login.page";
+import {AddressStepPage} from "../page/address-step.page";
+import {ShippingStepPage} from "../page/shipping-step.page";
+import {PaymentStepPage} from "../page/payment-step.page";
+const menuContentPage = new MenuContentPage();
+const productListPage = new ProductListPage();
+const shoppingCartPage = new ShoppingCartPage();
+const loginProcess = new LoginPage();
+const addressStep = new AddressStepPage();
+const shippingStep = new ShippingStepPage();
+const paymentStep = new PaymentStepPage();
+
 describe("Buy a t-shirt", () => {
   it("then the t-shirt should be bought", () => {
-    cy.visit("http://automationpractice.com/");
-    cy.get("#block_top_menu > ul > li:nth-child(3) > a").click();
-    cy.get("#center_column a.button.ajax_add_to_cart_button.btn.btn-default").click();
-    cy.get("[style*='display: block;'] .button-container > a").click();
-    cy.get(".cart_navigation span").click();
+    menuContentPage.visitMenuContentPage();
+    menuContentPage.goToTShirtMenu();
 
-    cy.get("#email").type("aperdomobo@gmail.com");
-    cy.get("#passwd").type("WorkshopProtractor");
+    productListPage.addToCart();
+    productListPage.proceedToCheckOutPopUpWindow();
 
-    cy.get("#SubmitLogin > span").contains("Sign in").click();
-    cy.get(".cart_navigation > .button > span").contains("Proceed to checkout").click();
-    cy.get("#cgv").click();
-    cy.get(".cart_navigation > .button > span").contains("Proceed to checkout").click();
-    cy.get(".bankwire").contains("Pay by bank wire").click();
-    cy.get("#cart_navigation > button > span").contains("I confirm my order").click();
+    shoppingCartPage.proceedToCheckOut();
+
+    loginProcess.login();
+    loginProcess.signIn();
+
+    addressStep.proceedToCheckOut();
+
+    shippingStep.checkTS();
+    shippingStep.proceedToCheckOut();
+
+    paymentStep.selectBankWirePayment();
+    paymentStep.confirmOrder();
 
     cy.get("#center_column > div > p > strong").should("have.text", "Your order on My Store is complete.");
   });
