@@ -3,8 +3,8 @@ class ShippingStepPage {
   private termsServiceCheck: string;
 
   constructor() {
-    this.checkOutBtn = ".cart_navigation > .button > span";
-    this.termsServiceCheck = "#cgv";
+    this.checkOutBtn = ".cart_navigation button[name='processCarrier']";
+    this.termsServiceCheck = "input#cgv";
   }
 
   public checkTS(): void {
