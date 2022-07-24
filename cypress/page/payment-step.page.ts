@@ -15,8 +15,8 @@ class PaymentStepPage {
     cy.get(this.confirmOrderBtn).click();
   }
 
-  public assert() {
-    cy.get("#center_column > div > p > strong").should("have.text", "Your order on My Store is complete.");
+  public assertConfirmationMessage(msg: string) {
+    cy.get("#center_column > div > p > strong").should("have.text", msg);
     return this;
   }
 }

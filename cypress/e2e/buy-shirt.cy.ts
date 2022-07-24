@@ -1,5 +1,12 @@
-import {MenuContentPage, ProductListPage, ShoppingCartPage, LoginPage} from "../page/index";
-import {AddressStepPage, ShippingStepPage, PaymentStepPage} from "../page/index";
+import {
+  MenuContentPage,
+  ProductListPage,
+  ShoppingCartPage,
+  LoginPage,
+  AddressStepPage,
+  ShippingStepPage,
+  PaymentStepPage,
+} from "../page/index";
 
 const menuContentPage = new MenuContentPage();
 const productListPage = new ProductListPage();
@@ -13,6 +20,7 @@ const paymentStep = new PaymentStepPage();
 describe("Buy a t-shirt", () => {
   const email = "aperdomobo@gmail.com";
   const passwd = "WorkshopProtractor";
+  const msg = "Your order on My Store is complete.";
 
   it("then the t-shirt should be bought", () => {
     menuContentPage.visitMenuContentPage();
@@ -32,6 +40,6 @@ describe("Buy a t-shirt", () => {
 
     paymentStep.selectBankWirePayment();
     paymentStep.confirmOrder();
-    paymentStep.assert();
+    paymentStep.assertConfirmationMessage(msg);
   });
 });
