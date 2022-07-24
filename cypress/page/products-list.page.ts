@@ -4,7 +4,7 @@ class ProductListPage {
 
   constructor() {
     this.addToCartBtn = ".button-container a[title='Add to cart']";
-    this.proceedToCheckOutBtn = ".clearfix .button-container a[title='Proceed to checkout']";
+    this.proceedToCheckOutBtn = ".button-container a[title='Proceed to checkout']";
   }
 
   public addToCart(): void {

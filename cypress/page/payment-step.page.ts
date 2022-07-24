@@ -1,10 +1,12 @@
 class PaymentStepPage {
   private bankWirePayment: string;
   private confirmOrderBtn: string;
+  private assert: string;
 
   constructor() {
     this.bankWirePayment = "a[title='Pay by bank wire'].bankwire";
     this.confirmOrderBtn = "#cart_navigation .button span";
+    this.assert = ".cheque-indent strong";
   }
 
   public selectBankWirePayment(): void {
@@ -16,7 +18,7 @@ class PaymentStepPage {
   }
 
   public assertConfirmationMessage(msg: string) {
-    cy.get("#center_column p.cheque-indent strong").should("have.text", msg);
+    cy.get(this.assert).should("have.text", msg);
     return this;
   }
 }

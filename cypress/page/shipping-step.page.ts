@@ -4,7 +4,7 @@ class ShippingStepPage {
 
   constructor() {
     this.checkOutBtn = ".cart_navigation button[name='processCarrier']";
-    this.termsServiceCheck = "input#cgv";
+    this.termsServiceCheck = "#cgv";
   }
 
   public checkTS(): void {
