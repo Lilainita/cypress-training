@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 class ProductListPage {
   private addToCartBtn: string;
   private proceedToCheckOutBtn: string;
@@ -7,7 +6,7 @@ class ProductListPage {
   constructor() {
     this.addToCartBtn = ".button-container a[title='Add to cart']";
     this.proceedToCheckOutBtn = ".button-container a[title='Proceed to checkout']";
-    this.productContainer = "#center_column > ul > li > div.product-container";
+    this.productContainer = ".product-container";
   }
 
   public addToCart(productName: string): void {
@@ -19,9 +18,7 @@ class ProductListPage {
   }
 
   private findProductByName(productName: string) {
-    return cy.get(this.productContainer).filter((k, el) => {
-      return (el.innerText.includes(productName));
-    });
+    return cy.get(this.productContainer).filter(`:contains(${productName})`);
   }
 }
 
