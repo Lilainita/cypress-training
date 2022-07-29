@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 class PersonalFormPage {
   private firstName: string;
   private lastName: string;
@@ -34,25 +33,14 @@ class PersonalFormPage {
     cy.visit(this.personalFormPageURL);
   }
 
-  public fillForm(userInfo:
-    {name: string,
-        lastName: string,
-        email: string,
-        gender: string,
-        mobileNumber: string,
-        dateOfBirth: string,
-        hobbies: string[],
-        currentAddress: string,
-        state: string,
-        city: string
-       }, assertMsg: string): void {
+  public fillForm(userInfo: PersonalInfo): void {
     cy.get(this.firstName).type(userInfo.name);
     cy.get(this.lastName).type(userInfo.lastName);
     cy.get(this.email).type(userInfo.email);
     cy.get(this.gender).find(`input[value = '${userInfo.gender}']`).click({force: true});
     cy.get(this.mobile).type(userInfo.mobileNumber);
-    //  cy.get(this.birthDate).click();
-    //  cy.get(this.birthDate).type(userInfo.dateOfBirth);
+    cy.get(this.birthDate).type("{selectall}");
+    cy.get(this.birthDate).type(`${userInfo.dateOfBirth}{enter}`);
     userInfo.hobbies.forEach((hobbie) => {
       cy.get(this.hobbies).find(".custom-control-label").filter(`:contains("${hobbie}")`).click();
     });
@@ -60,8 +48,24 @@ class PersonalFormPage {
     cy.get(this.state).type(`${userInfo.state} {enter}`, {force: true});
     cy.get(this.city).type(`${userInfo.city} {enter}`, {force: true});
     cy.get(this.submitBtn).click({force: true});
+  }
+
+  public verifyModalTitle(assertMsg: string): void {
     cy.get(this.modalTitle).should("have.text", assertMsg);
   }
+}
+
+interface PersonalInfo{
+  name: string,
+  lastName: string,
+  email: string,
+  gender: string,
+  mobileNumber: string,
+  dateOfBirth: string,
+  hobbies: string[],
+  currentAddress: string,
+  state: string,
+  city: string
 }
 
 export {PersonalFormPage};

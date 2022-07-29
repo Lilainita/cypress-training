@@ -20,6 +20,7 @@ describe("Student Registration Form", () => {
 
   it("Filling the Student Personal Info Form ...", () => {
     personalFormPage.visitFormPage();
-    personalFormPage.fillForm(personalInformation, "Thanks for submitting the form");
+    personalFormPage.fillForm(personalInformation);
+    personalFormPage.verifyModalTitle("Thanks for submitting the form");
   });
 });
