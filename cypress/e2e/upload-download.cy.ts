@@ -2,15 +2,18 @@ import {UploadPage} from "../page/index";
 
 describe("Upload/Download Test", () =>{
   let upload: UploadPage;
-  const assertMsg = "File Uploaded!";
+  let fileName: string;
+  let assertMsg: string;
 
   before(() => {
     upload = new UploadPage();
+    fileName = "example.json";
+    assertMsg = "File Uploaded!";
   });
 
   it("Uploading a File", () => {
     upload.visitUploadPage();
-    upload.uploadFile();
-    upload.assertMsg(assertMsg);
+    upload.uploadFile(fileName);
+    upload.assertConfirmation(assertMsg, fileName);
   });
 });
