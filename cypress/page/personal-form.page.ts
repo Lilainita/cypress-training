@@ -39,8 +39,7 @@ class PersonalFormPage {
     cy.get(this.email).type(userInfo.email);
     cy.get(this.gender).find(`input[value = '${userInfo.gender}']`).click({force: true});
     cy.get(this.mobile).type(userInfo.mobileNumber);
-    cy.get(this.birthDate).type("{selectall}");
-    cy.get(this.birthDate).type(`${userInfo.dateOfBirth}{enter}`);
+    cy.get(this.birthDate).type(`{selectall}${userInfo.dateOfBirth}{enter}`);
     userInfo.hobbies.forEach((hobbie) => {
       cy.get(this.hobbies).find(".custom-control-label").filter(`:contains("${hobbie}")`).click();
     });
