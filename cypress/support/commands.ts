@@ -31,3 +31,4 @@ Cypress.on("uncaught:exception", (err, runnable) => {
 });
 
 import 'cypress-file-upload';
+require('cypress-downloadfile/lib/downloadFileCommand');
