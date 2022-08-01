@@ -5,12 +5,14 @@ describe("Upload/Download Test", () =>{
   let fileName: string;
   let assertMsg: string;
   let download: DownloadPage;
+  let downloadFileName: string;
 
   before(() => {
     upload = new UploadPage();
     download = new DownloadPage();
     fileName = "example.json";
     assertMsg = "File Uploaded!";
+    downloadFileName = "sampleFile.jpeg";
   });
 
   it("Uploading a File", () => {
@@ -21,7 +23,7 @@ describe("Upload/Download Test", () =>{
 
   it("Downloading a File", () => {
     download.visitDownloadPage();
-    download.downloadFile(fileName);
-    download.verifyFile(fileName);
+    download.downloadFile();
+    download.verifyFile(downloadFileName);
   });
 });
