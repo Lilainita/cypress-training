@@ -1,4 +1,3 @@
-/* eslint-disable require-jsdoc */
 class DownloadPage {
   private downloadPageURL: string;
   private downloadBtn: string;
@@ -13,8 +12,6 @@ class DownloadPage {
   }
 
   public downloadFile():void {
-    // cy.downloadFile(this.downloadPageURL, route, fileName);
-    // cy.get(`a[href="download/${fileName}"]`).click();
     cy.get(this.downloadBtn).click();
   }
 
